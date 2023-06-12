@@ -1,0 +1,54 @@
+---
+title: Husky Overview
+sidebar_position: 2
+---
+
+import ComponentIntroductionHusky from "/components/introduction_husky.mdx";
+
+<ComponentIntroductionHusky />
+
+## Husky Overview
+
+### Introduction
+
+Husky is a rugged, outdoor-ready unmanned ground vehicle (UGV), suitable for research and rapid prototyping applications.
+These tutorials will assist you with setting up and operating your Husky. The tutorial topics are listed in
+the right column and presented in the suggested reading order.
+
+For more information or to receive a quote, please [visit us online](http://clearpathrobotics.com/husky).
+
+:::note
+
+These tutorials assume that you are comfortable working with ROS. We recommend starting with our
+[ROS tutorial](https://www.clearpathrobotics.com/assets/guides/noetic/ros/index.html) if you are not familiar with ROS already.
+
+:::
+
+:::note
+
+These tutorials specifically target Husky robots running Ubuntu 20.04 with ROS Noetic, as it is the standard
+OS environment for Husky. If instead you have an older Husky robot running Ubuntu 18.04 with ROS Melodic,
+please follow [this tutorial](https://www.clearpathrobotics.com/assets/guides/melodic/melodic-to-noetic/index.html)
+to upgrade the robot OS environment to Ubuntu 20.04 with ROS Noetic.
+
+:::
+
+[Husky ROS Packages](#husky-ros-packages) provides the references for the software packages and key ROS topics.
+
+[Husky Software Setup](#husky-software-setup) outlines the steps for setting up the software on
+your Husky robot and optionally on a remote computer.
+
+[Using Husky](#using-husky) describes how to simulate and drive your Husky. [Simuation](#simulating-husky)
+is a great way for most users to learn more about their Husky; understanding how to effectively operate Husky
+in simulation is valuable whether you are in the testing phase with software you intend to ultimately deploy on a
+physical Husky, or you do not have one and are simply exploring the platform's capabilities.
+[Driving Husky](#driving-husky) covers how to teleoperate Husky using the remote control, as well as safety
+procedures for operating the physical robot. Anyone working with a physical robot should be familiar with this section.
+
+[Navigating Husky](#navigating-husky) is a follow-on to what is learned in the [Simuation](#simulating-husky)
+tutorial, as navigation and map-making may be run in the simulated environment. However, this content is applicable
+to both the simulator and the real platform, if your Husky is equipped with a laser scanner.
+
+[Husky Tests](#testing-husky) outlines how to validate that your physical Husky is working correctly.
+
+[Advanced Topics](#advanced-topics) covers items that are only required in atypical situations.

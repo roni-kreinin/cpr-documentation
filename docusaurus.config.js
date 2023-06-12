@@ -37,14 +37,50 @@ const config = {
     [
       "@docusaurus/plugin-content-docs",
       {
-        path: "docs",
-        routeBasePath: "docs",
+        id: "robots",
+        path: "docs/robots",
+        routeBasePath: "docs/robots",
         sidebarPath: require.resolve("./sidebars.js"),
         remarkPlugins: [math],
         rehypePlugins: [katex],
         showLastUpdateTime: true,
       },
     ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "software",
+        path: "docs/software",
+        routeBasePath: "docs/software",
+        sidebarPath: require.resolve("./sidebars.js"),
+        remarkPlugins: [math],
+        rehypePlugins: [katex],
+        showLastUpdateTime: true,
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "add-ons",
+        path: "docs/add-ons",
+        routeBasePath: "docs/add-ons",
+        sidebarPath: require.resolve("./sidebars.js"),
+        remarkPlugins: [math],
+        rehypePlugins: [katex],
+        showLastUpdateTime: true,
+      },
+    ],
+    // [
+    //   "@docusaurus/plugin-content-docs",
+    //   {
+    //     path: "docs",
+    //     routeBasePath: "docs",
+    //     sidebarPath: require.resolve("./sidebars.js"),
+    //     remarkPlugins: [math],
+    //     rehypePlugins: [katex],
+    //     showLastUpdateTime: true,
+    //   },
+    // ],
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -83,44 +119,50 @@ const config = {
         },
         items: [
           {
-            to: "/docs/robots",
+            type: "doc",
+            docId: "robots",
             label: "Robots",
             position: "left",
+            docsPluginId: "robots",
           },
           {
-            to: "/docs/computers",
-            label: "Computers",
-            position: "left",
-          },
-          {
-            to: "/docs/sensors",
-            label: "Sensors",
-            position: "left",
-          },
-          {
-            to: "/docs/manipulators",
-            label: "Manipulators",
-            position: "left",
-          },
-          {
-            to: "/docs/accessories",
-            label: "Accessories",
-            position: "left",
-          },
-          {
-            to: "/docs/components",
-            label: "Components",
-            position: "left",
-          },
-          {
-            to: "/docs/software",
+            type: "doc",
+            docId: "software",
             label: "Software",
             position: "left",
+            docsPluginId: "software",
           },
           {
-            to: "/docs/tools",
-            label: "Tools",
+            type: "doc",
+            docId: "add-ons",
+            label: "Add-ons",
             position: "left",
+            docsPluginId: "add-ons",
+          },
+          {
+            type: "docsVersion",
+            label: "Outdoor Nav",
+            position: "left",
+            docsPluginId: "outdoornav_user_manual",
+          },
+          {
+            type: "doc",
+            docId: "index",
+            label: "Indoor Nav",
+            position: "left",
+            docsPluginId: "indoornav_user_manual",
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
+            dropdownItemsAfter: [
+              {
+                to: '/docs/software/navigation_packages',
+                label: 'All versions',
+              },
+            ],
+            docsPluginId: "outdoornav_user_manual",
           },
           {
             to: "about",

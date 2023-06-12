@@ -1,0 +1,162 @@
+---
+title: Software Setup
+sidebar_label: Software Setup
+sidebar_position: 1
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+
+import ComponentPs4ControllerPairing from "/components/ps4_controller_pairing.mdx";
+import ComponentChangingDefaultPassword from "/components/changing_default_password.mdx";
+import ComponentWiredRobotConnection from "/components/wired_robot_connection.mdx";
+import ComponentWifiRobotConnection from "/components/wifi_robot_connection.mdx";
+import ComponentConfiguringNetworkBridge from "/components/configuring_network_bridge.mdx";
+import ComponentPerformingABackup from "/components/performing_a_backup.mdx";
+import ComponentInstallingRobotSoftware from "/components/installing_robot_software.mdx";
+import ComponentInstallingRemoteComputerSoftware from "/components/installing_remote_computer_software.mdx";
+import ComponentAddingASourceWorkspace from "/components/adding_a_source_workspace.mdx";
+import ComponentDrivingWithRemoteController from "/components/driving_with_remote_controller.mdx";
+import Support from "/components/support.mdx";
+
+
+## Husky Software Setup {#husky-software-setup}
+
+### Backing Up Robot Configuration
+
+Upgrading your Clearpath Husky to ROS Noetic from older ROS distributions is a straightforward process;
+however it's important to understand that each Husky is different, having undergone customization to your
+specifications. For more complete upgrade instructions see
+[this guide](https://clearpathrobotics.com/assets/guides/melodic/melodic-to-noetic/index.html).
+
+Please take the time to understand what these modifications are, and how to recreate them on your fresh install of
+Ubuntu Focal/ROS Noetic.
+
+#### Performing a Backup {#performing-a-backup}
+
+<ComponentPerformingABackup />
+
+### Installing and Configuring Robot Software
+
+:::note
+
+If you are upgrading your Husky from an older version of ROS, please refer to
+our upgrade instructions [here](https://clearpathrobotics.com/assets/guides/kinetic/kinetic-to-melodic/index.html)
+and [here](https://clearpathrobotics.com/assets/guides/melodic/melodic-to-noetic/index.html).
+
+:::
+
+#### Installing Husky Software
+
+:::note
+
+The physical Husky robot comes pre-configured with ROS and the necessary Husky packages already installed;
+therefore, you will only need to follow the instructions below if you are re-installing software on the Husky.
+
+:::
+
+<ComponentInstallingRobotSoftware />
+
+#### Testing Base Configuration
+
+1. To test your configuration, start the background service with the following command:
+
+   ```
+   sudo systemctl start ros
+   ```
+
+2. The `COMM` light on your Husky should go from red to green. You can check that the service has started correctly
+   by checking the logs:
+
+   ```
+   sudo journalctl -u ros
+   ```
+
+3. Your Husky should now be accepting commands from your joystick (see next section).
+   The service will automatically start each time you boot your Husky's computer.
+
+#### Pairing the Controller {#pairing-the-controller}
+
+##### PS4 Controller
+
+<ComponentPs4ControllerPairing />
+
+##### Logitech F710 Controller
+
+:::caution
+
+Logitech controllers are not considered safe, and usage should be experimental only. If your robot has bluetooth capabilities, please switch to using a PS4 controller instead.
+
+:::
+
+Some Husky robots ship with a Logitech F710 controller instead of a PS4 controller. Pairing these controllers
+is very easy: simply plug the USB dongle into one of robot's USB ports and turn the controller on.
+
+By default Husky will use the PS4 controller for teleoperation and ignore the F710. To enable the F710 to control
+the robot, run `sudo nano /etc/ros/setup.bash` and add the following line to the middle of the file, under the six
+`#` characters:
+
+```
+######
+export HUSKY_LOGITECH=1
+```
+
+Save the file and press CTRL + X to save and quit nano. Then restart ROS by running `sudo systemctl restart ros` or rebooting the robot.
+When ROS restarts it will now use the Logitech controller as its teleoperation input device.
+
+### Setting up Husky's Network Configuration {#husky-networking}
+
+Husky is normally equipped with a combination Wi-Fi + Bluetooth module.
+If this is your first unboxing, ensure that Husky's wireless antennae are firmly screwed on to the chassis.
+Some Husky robots may only be equipped with a single antenna, depending on the exact model of PC installed in the robot.
+
+#### First Connection
+
+By default, Husky's Wi-Fi is in client mode, looking for the wireless network at the Clearpath factory.
+
+<ComponentWiredRobotConnection />
+
+#### Changing the Default Password
+
+<ComponentChangingDefaultPassword />
+
+#### Wi-Fi Setup
+
+<ComponentWifiRobotConnection />
+
+### Installing Remote Computer Software {#remote-computer-software}
+
+:::note
+
+This step is optional.
+
+:::
+
+<ComponentInstallingRemoteComputerSoftware />
+
+### Customizing Husky Configuration
+
+:::note
+
+These tutorials assume that you are familiar with ROS and the catkin build system.
+Please familiarize yourself using the [ROS](http://wiki.ros.org/ROS/Tutorials) and
+[catkin](http://wiki.ros.org/catkin/Tutorials) tutorials.
+
+:::
+
+If upgrading from a prior ROS release, you should now re-examine your backed-up files from
+[Performing a Backup](#performing-a-backup) to determine if there's any customizations that
+need to be configured on your platform.
+
+#### Environment Variables {#environment-variables}
+
+Husky can be customized and extended through the use of several environment variables. These are summarized in the
+[README](https://github.com/husky/husky/blob/noetic-devel/husky_description/README.md) file.
+
+#### Adding a Source Workspace
+
+<ComponentAddingASourceWorkspace />
+
+
+## Support {#support}
+
+<Support />
