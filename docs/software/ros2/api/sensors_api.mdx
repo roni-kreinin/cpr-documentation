@@ -1,0 +1,41 @@
+---
+title: ROS 2 Sensors API
+sidebar_label: Sensors API
+sidebar_position: 4
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+
+
+## 2D Lidar topics
+
+| Topic                           | Message type                                                                                                 | Publisher     | Description     |
+| :------------------------------ | :----------------------------------------------------------------------------------------------------------- | :------------ | :-------------- |
+| platform/sensors/lidar2d_#/scan | [sensor_msgs/LaserScan](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/LaserScan.msg) | 2D Lidar node | Lidar scan data |
+
+## 3D Lidar topics
+
+| Topic                             | Message type                                                                                                     | Publisher     | Description           |
+| :-------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :------------ | :-------------------- |
+| platform/sensors/lidar3d_#/points | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | 3D Lidar node | Lidar pointcloud data |
+
+## Camera topics
+
+| Topic                                 | Message type                                                                                                     | Publisher   | Description     |
+| :------------------------------------ | :--------------------------------------------------------------------------------------------------------------- | :---------- | :-------------- |
+| platform/sensors/camera_#/rgb         | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw RGB image   |
+| platform/sensors/camera_#/depth       | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw depth image |
+| platform/sensors/camera_#/points      | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | Camera node | Pointcloud data |
+| platform/sensors/camera_#/camera_info | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/CameraInfo.msg)   | Camera node | Camera Info     |
+| platform/sensors/camera_#/imu         | [sensor_msgs/Imu](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Imu.msg)                 | Camera node | IMU data        |
+
+## GPS topics
+
+| Topic                                 | Message type                                                                                                     | Publisher   | Description     |
+| :------------------------------------ | :--------------------------------------------------------------------------------------------------------------- | :---------- | :-------------- |
+| platform/sensors/camera_#/rgb         | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw RGB image   |
+| platform/sensors/camera_#/depth       | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw depth image |
+| platform/sensors/camera_#/points      | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | Camera node | Pointcloud data |
+| platform/sensors/camera_#/camera_info | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/CameraInfo.msg)   | Camera node | Camera Info     |
+| platform/sensors/camera_#/imu         | [sensor_msgs/Imu](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Imu.msg)                 | Camera node | IMU data        |
+
