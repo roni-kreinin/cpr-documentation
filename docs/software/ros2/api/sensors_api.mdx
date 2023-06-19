@@ -9,33 +9,40 @@ toc_max_heading_level: 4
 
 ## 2D Lidar topics
 
-| Topic                           | Message type                                                                                                 | Publisher     | Description     |
-| :------------------------------ | :----------------------------------------------------------------------------------------------------------- | :------------ | :-------------- |
-| platform/sensors/lidar2d_#/scan | [sensor_msgs/LaserScan](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/LaserScan.msg) | 2D Lidar node | Lidar scan data |
+| Topic                           | Message type                                                                                                 | Description     | QoS            |
+| :------------------------------ | :----------------------------------------------------------------------------------------------------------- | :-------------- | :------------- |
+| platform/sensors/lidar2d_#/scan | [sensor_msgs/LaserScan](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/LaserScan.msg) | Lidar scan data | System Default |
 
 ## 3D Lidar topics
 
-| Topic                             | Message type                                                                                                     | Publisher     | Description           |
-| :-------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :------------ | :-------------------- |
-| platform/sensors/lidar3d_#/points | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | 3D Lidar node | Lidar pointcloud data |
+| Topic                             | Message type                                                                                                     | Description           | QoS            |
+| :-------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------- |
+| platform/sensors/lidar3d_#/points | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | Lidar pointcloud data | System Default |
+| platform/sensors/lidar3d_#/scan   | [sensor_msgs/LaserScan](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/LaserScan.msg)     | Lidar scan data       | System Default |
 
 ## Camera topics
 
-| Topic                                 | Message type                                                                                                     | Publisher   | Description     |
-| :------------------------------------ | :--------------------------------------------------------------------------------------------------------------- | :---------- | :-------------- |
-| platform/sensors/camera_#/rgb         | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw RGB image   |
-| platform/sensors/camera_#/depth       | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw depth image |
-| platform/sensors/camera_#/points      | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | Camera node | Pointcloud data |
-| platform/sensors/camera_#/camera_info | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/CameraInfo.msg)   | Camera node | Camera Info     |
-| platform/sensors/camera_#/imu         | [sensor_msgs/Imu](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Imu.msg)                 | Camera node | IMU data        |
+| Topic                                        | Message type                                                                                                     | Description     | QoS            |
+| :------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------- | :------------- |
+| platform/sensors/camera_#/colour/image       | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Raw RGB image   | System Default |
+| platform/sensors/camera_#/colour/camera_info | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/CameraInfo.msg)   | Camera Info     | System Default |
+| platform/sensors/camera_#/depth/image        | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Raw depth image | System Default |
+| platform/sensors/camera_#/depth/camera_info  | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/CameraInfo.msg)   | Camera Info     | System Default |
+| platform/sensors/camera_#/points             | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | Pointcloud data | System Default |
+| platform/sensors/camera_#/imu                | [sensor_msgs/Imu](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Imu.msg)                 | IMU data        | System Default |
+
+## IMU topics
+
+| Topic                           | Message type                                                                                                         | Description                                                              | QoS            |
+| :------------------------------ | :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------- | :------------- |
+| platform/sensors/imu_#/data_raw | [sensor_msgs/Imu](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Imu.msg)                     | Raw IMU orientation, angular velocity, and linear acceleration data      | Best Effort    |
+| platform/sensors/imu_#/data     | [sensor_msgs/Imu](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Imu.msg)                     | Filtered IMU orientation, angular velocity, and linear acceleration data | System Default |
+| platform/sensors/imu_#/mag      | [sensor_msgs/MagneticField](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/MagneticField.msg) | IMU magnetic field data                                                  | System Default |
 
 ## GPS topics
 
-| Topic                                 | Message type                                                                                                     | Publisher   | Description     |
-| :------------------------------------ | :--------------------------------------------------------------------------------------------------------------- | :---------- | :-------------- |
-| platform/sensors/camera_#/rgb         | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw RGB image   |
-| platform/sensors/camera_#/depth       | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Image.msg)             | Camera node | Raw depth image |
-| platform/sensors/camera_#/points      | [sensor_msgs/PointCloud2](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/PointCloud2.msg) | Camera node | Pointcloud data |
-| platform/sensors/camera_#/camera_info | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/CameraInfo.msg)   | Camera node | Camera Info     |
-| platform/sensors/camera_#/imu         | [sensor_msgs/Imu](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/Imu.msg)                 | Camera node | IMU data        |
+| Topic                      | Message type                                                                                                 | Description            | QoS            |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------- | :--------------------- | :------------- |
+| platform/sensors/gps_#/fix | [sensor_msgs/NavSatFix](https://github.com/ros2/common_interfaces/blob/humble/sensor_msgs/msg/NavSatFix.msg) | Navsat Fix information | System Default |
+
 
