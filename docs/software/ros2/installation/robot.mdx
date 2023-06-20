@@ -49,3 +49,37 @@ sudo apt install ros-humble-clearpath-robot
 ```
 
 Installing this package will also install all dependencies required to run any Clearpath robot and supported sensors, other than Clearpath firmware packages.
+
+## Firmware Update
+
+All platforms with the exception of the A200 will require a firmware update to run ROS 2 Humble.
+
+### J100
+
+1. SSH into the Jackal's PC.
+2. Download the Jackal Firmware package from the Clearpath package server:
+
+```
+sudo apt-get update
+sudo apt-get install ros-humble-jackal-firmware
+```
+
+3. Place the Jackal MCU into bootloader mode by switching the *PWR_MODE* switch from *NORM* to *ALT*. If the robot is on, press the *M_RST* button. Otherwise, turn the
+robot on with the power button.
+
+4. From the Jackal's PC, flash the firmware:
+
+```
+jackal_firmware_flash.sh
+```
+Wait for the firmware to be flashed.
+
+:::caution
+Do not turn the robot off or unplug the micro-USB cable while flashing firmware.
+:::
+
+5. Once the firmware has been flashed, place the Jackal MCU back into normal mode by switching the PWR_MODE switch from ALT to NORM.
+The robot will power off. Turn the robot back on by pressing the power button.
+
+## Robot services
+
