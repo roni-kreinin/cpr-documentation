@@ -6,17 +6,17 @@ toc_min_heading_level: 2
 toc_max_heading_level: 4
 ---
 
-## Operating System (OS) {#operating-system}
+### Operating System (OS) {#operating-system}
 
 ROS 2 Humble uses [Ubuntu 22.04](https://releases.ubuntu.com/jammy/) as its Tier 1 operating system. Though other operating systems are supported,
 it is highly recommended to use Ubuntu 22.04. For the robot PC, Ubuntu 22.04 Server should be installed. The server version of the OS will not install a
 graphical user interface (GUI).
 
-## Networking
+### Networking
 
 Once the operating system is installed, the robot PC needs to be connected to the internet. TODO.
 
-## Clearpath Package Server
+### Clearpath Package Server
 
 The Clearpath package server needs to be added to the robot PC to access robot packages.
 
@@ -40,7 +40,7 @@ sudo sh -c 'echo "deb https://packages.clearpathrobotics.com/stable/ubuntu $(lsb
 sudo apt-get update
 ```
 
-## Clearpath Robot metapackage
+### Clearpath Robot metapackage
 
 Once the Clearpath package server has been added, the [Clearpath Robot](https://github.com/clearpathrobotics/clearpath_robot) metapackage can be installed.
 
@@ -50,11 +50,11 @@ sudo apt install ros-humble-clearpath-robot
 
 Installing this package will also install all dependencies required to run any Clearpath robot and supported sensors, other than Clearpath firmware packages.
 
-## Firmware Update
+### Firmware Update
 
 All platforms with the exception of the A200 will require a firmware update to run ROS 2 Humble.
 
-### J100
+#### J100
 
 1. SSH into the Jackal's PC.
 2. Download the Jackal Firmware package from the Clearpath package server:
@@ -81,7 +81,7 @@ Do not turn the robot off or unplug the micro-USB cable while flashing firmware.
 5. Once the firmware has been flashed, place the Jackal MCU back into normal mode by switching the PWR_MODE switch from ALT to NORM.
 The robot will power off. Turn the robot back on by pressing the power button.
 
-## Robot services
+### Robot services
 
 Clearpath robot services can be installed with the following command:
 
