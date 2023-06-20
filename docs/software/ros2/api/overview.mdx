@@ -10,9 +10,6 @@ toc_max_heading_level: 4
 The ROS 2 API is a standard naming scheme for ROS 2 topics and services. Every supported Clearpath
 robot uses this API, making it easy to use the robots interchangeably.
 
-## Namespacing
-
-TODO
 
 ## QoS Profiles {#qos-profiles}
 
@@ -89,3 +86,13 @@ Not all sensor drivers use this QoS profile. Always check the QoS profile before
 The *Transient Local* QoS Profile offers a *Transient Local* durability, and is typically used by topics that only
 want to send messages once. For Clearpath platforms, this includes the robot description topic and the `/rosout` topic
 which offers system logs.
+
+## Namespacing
+
+Namespacing is the method of adding a prefix to a robots nodes and topics, to differentiate them from another robot that
+may be on the same network. For example, every robot will have a `cmd_vel` topic for commanding velocity. If both robots
+used the same topic, then they would both drive when a message is published to that topic. By namespacing, we can remap the topic
+to `robot1/cmd_vel` and `robot2/cmd_vel` for each respective robot. 
+
+By default, the namespace of the robot will be obtained from the serial number of the robot. If your serial number is `cpr-a200-0001`, then your namespace
+will be `a200_0001`. This can be overwritten in the [robot.yaml](../config/yaml) file.

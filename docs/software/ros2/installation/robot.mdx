@@ -16,25 +16,31 @@ graphical user interface (GUI).
 
 Once the operating system is installed, the robot PC needs to be connected to the internet. TODO.
 
+### ROS 2 Humble
+
+Follow the [official instructions](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html) for installing ROS 2 Humble from debian packages.
+
 ### Clearpath Package Server
 
 The Clearpath package server needs to be added to the robot PC to access robot packages.
 
 Configure Ubuntu's APT package manager to add the package server:
 
-1. Install the authentication key for the packages.clearpathrobotics.com repository. In terminal, run:
+**1. Install the authentication key for the packages.clearpathrobotics.com repository**
 
 ```
 wget https://packages.clearpathrobotics.com/public.key -O - | sudo apt-key add -
 ```
 
-2. Add the debian sources for the repository. In terminal, run:
+**2. Add the debian sources for the repository** 
+
 
 ```
 sudo sh -c 'echo "deb https://packages.clearpathrobotics.com/stable/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/clearpath-latest.list'
 ```
 
-3. Update your computer’s package cache. In terminal, run:
+**3. Update your computer’s package cache**
+
 
 ```
 sudo apt-get update
@@ -56,18 +62,21 @@ All platforms with the exception of the A200 will require a firmware update to r
 
 #### J100
 
-1. SSH into the Jackal's PC.
-2. Download the Jackal Firmware package from the Clearpath package server:
+Jackal firmware can be flashed from the Jackal's PC.
+
+**1. Download the Jackal Firmware package from the Clearpath package server**
 
 ```
 sudo apt-get update
 sudo apt-get install ros-humble-jackal-firmware
 ```
 
-3. Place the Jackal MCU into bootloader mode by switching the *PWR_MODE* switch from *NORM* to *ALT*. If the robot is on, press the *M_RST* button. Otherwise, turn the
+**2. Place the Jackal MCU into bootloader mode**
+
+Switch the *PWR_MODE* switch from *NORM* to *ALT*. If the robot is on, press the *M_RST* button. Otherwise, turn the
 robot on with the power button.
 
-4. From the Jackal's PC, flash the firmware:
+**3. Flash the firmware**
 
 ```
 jackal_firmware_flash.sh
@@ -78,14 +87,27 @@ Wait for the firmware to be flashed.
 Do not turn the robot off or unplug the micro-USB cable while flashing firmware.
 :::
 
-5. Once the firmware has been flashed, place the Jackal MCU back into normal mode by switching the PWR_MODE switch from ALT to NORM.
+**4. Place the Jackal MCU into normal mode**
+
+Once the firmware has been flashed, place the Jackal MCU back into normal mode by switching the PWR_MODE switch from ALT to NORM.
 The robot will power off. Turn the robot back on by pressing the power button.
+
+### Setup folder
+
+Create the setup folder where the [robot.yaml](../config/yaml) file will be stored, and where files will be generated:
+
+```
+sudo mkdir /etc/clearpath/ -p && sudo chmod 666 /etc/clearpath/
+```
+
+Copy your `robot.yaml` file into `/etc/clearpath/`.
 
 ### Robot services
 
-Clearpath robot services can be installed with the following command:
+Clearpath robot services can now be installed with the following command:
 
 ```
+source /opt/ros/humble/setup.bash
 ros2 run clearpath_robot install
 ```
 
@@ -96,4 +118,10 @@ To start the services, call
 
 ```
 sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
+```
+
+Add the following line to your `~/.bashrc` file to automatically source the generated `setup.bash` file in new terminals:
+
+```
+source /etc/clearpath/setup.bash
 ```
