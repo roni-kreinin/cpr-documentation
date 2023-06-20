@@ -83,3 +83,17 @@ The robot will power off. Turn the robot back on by pressing the power button.
 
 ## Robot services
 
+Clearpath robot services can be installed with the following command:
+
+```
+ros2 run clearpath_robot install
+```
+
+This script uses [robot_upstart](https://github.com/clearpathrobotics/robot_upstart/tree/foxy-devel) to install the `systemd` services
+that will launch platform and sensor launch files as background processes.
+
+To start the services, call
+
+```
+sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
+```
