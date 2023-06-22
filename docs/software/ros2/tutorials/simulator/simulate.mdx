@@ -18,7 +18,7 @@ It can be called like this:
 ros2 launch clearpath_gz simulation.launch.py
 ```
 
-The launch file will run all of the necessary [generators](../config/generators) to generate launch and parameter files for the simulation before launching Gazebo and spawning the robot. These will be placed under the setup path (defaults to `~/clearpath/`).
+The launch file will run all of the necessary [generators](../config/generators) to generate launch and parameter files for the simulation before launching Gazebo and spawning the robot. These will be placed under the setup path (defaults to `$HOME/clearpath/`).
 
 
 ### Launch arguments
@@ -26,7 +26,7 @@ The launch file will run all of the necessary [generators](../config/generators)
 If you are using a different setup path, use the `setup_path` launch argument to change it:
 
 ```
-ros2 launch clearpath_gz simulation.launch.py setup_path:=/home/user/setup/path/
+ros2 launch clearpath_gz simulation.launch.py setup_path:=$HOME/setup/path/
 ```
 
 The Gazebo world (defaults to `warehouse`) can be changed using the `world` launch argument:
